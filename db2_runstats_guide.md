@@ -214,7 +214,9 @@ db2 "RUNSTATS ON TABLE DB2INST1.DEPARTMENT ON ALL COLUMNS AND COLUMNS (DEPTNO, M
 2. The table has 4 non-null manager entries spread across 2 distinct manager IDs (each ID appears ~2 times).
 3. Because the values are **flat and evenly distributed**, no single value crossed the statistical threshold to be marked as a frequent value. Db2 recorded `VALCOUNT = -1` in `SYSCAT.COLDIST`.
 4. The optimizer uses a standard uniform mathematical formula:
-   $$\text{Expected Selectivity} = \frac{\text{Total Rows} - \text{NUMNULLS}}{\text{COLCARD}}$$
+   ```text
+   Expected Rows = (Total Rows - NUMNULLS) / COLCARD
+   ```
 
 ### Why `LOCATION` Shows `1F, 0Q`
 All 8 non-null rows have the identical blank/null value. This represents **extreme data skew**, so Db2 records it as 1 Frequent Value (`VALCOUNT = 8`).
