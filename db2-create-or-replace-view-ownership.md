@@ -167,13 +167,13 @@ SELECT col1, col2 FROM myschema.mytable WHERE col3 = 'X';
 **Considerations for this approach:**
 - The new view will be **owned by the user** who ran `CREATE VIEW`
 - Any **dependent objects** (packages, other views) that referenced the old view will be **invalidated** and must be rebound/recreated
-- In a DPF environment with 120 MLNs, this is a catalog-level operation propagated across all partitions — it is safe but ensure no active sessions are using the view
+- In a DPF environment with multiple MLNs, this is a catalog-level operation propagated across all partitions — it is safe but ensure no active sessions are using the view
 
 ---
 
-## Important Note for DPF / 120 MLN Environments
+## Important Note for DPF / multiple MLN Environments
 
-In a partitioned database (DPF) with 120 MLNs, all DDL operations including `DROP VIEW` and `CREATE VIEW` are **propagated across all partitions via the catalog partition**. This is expected behavior. The ownership rule applies identically regardless of the number of partitions — the error is **not** caused by partition count or DPF architecture.
+In a partitioned database (DPF) with multiple MLNs, all DDL operations including `DROP VIEW` and `CREATE VIEW` are **propagated across all partitions via the catalog partition**. This is expected behavior. The ownership rule applies identically regardless of the number of partitions — the error is **not** caused by partition count or DPF architecture.
 
 ---
 
