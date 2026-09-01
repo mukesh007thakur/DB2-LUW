@@ -201,4 +201,4 @@ In a partitioned database (DPF) with 120 MLNs, all DDL operations including `DRO
 
 ---
 
-*This document is based on IBM DB2 LUW 12.1 official SQL0551N message text and behavior observed in a DPF environment with 120 MLNs.*
+*This document is based on IBM DB2 LUW 12.1 official SQL0551N message text and behavior observed in a DPF environment with multiple MLNs.*
