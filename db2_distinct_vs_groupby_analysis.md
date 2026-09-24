@@ -6,7 +6,7 @@ A common question in SQL development is whether `SELECT DISTINCT id FROM table_n
 
 Logically and mathematically, **both queries produce identical result sets and identical row counts**, including identical handling of `NULL` values. However, in real-world IBM Db2 environments—especially involving **multi-table joins, massive datasets (millions/billions of rows), and Database Partitioning Feature (DPF / MPP) architectures with multiple Multiple Logical Nodes (MLNs)**—the physical execution mechanics diverge drastically.
 
-While a query with multiple joins and `DISTINCT` may take **10–15 minutes**, rewriting it with `GROUP BY` often finishes in **a few seconds**. This post explains the architectural reasons, examines actual Db2 Explain plans, and breaks down why `GROUP BY` scales significantly better in large distributed database topologies.
+While a query with multiple joins and `DISTINCT` may take **10–15 minutes**, rewriting it with `GROUP BY` often finishes in **a few seconds**. This post explains the process flow, examines actual Db2 Explain plans, and breaks down why `GROUP BY` scales significantly better in large distributed database topologies.
 
 ---
 
