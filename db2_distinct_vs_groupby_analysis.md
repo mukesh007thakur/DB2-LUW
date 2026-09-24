@@ -1,6 +1,6 @@
-# Deep Dive: SELECT DISTINCT vs. GROUP BY in IBM Db2 LUW (and DPF with multiple MLNs)
+# IBM Db2 LUW (DPF with multiple MLNs) | Deep Dive | Performance Tuning | SELECT DISTINCT vs. GROUP BY
 
-## Executive Summary
+## Summary
 
 A common question in SQL development is whether `SELECT DISTINCT id FROM table_name` can be replaced with `SELECT id FROM table_name GROUP BY id`. 
 
