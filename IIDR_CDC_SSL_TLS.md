@@ -12,7 +12,7 @@ Windows Server: Management Console 11.4.0.4.11072
 
 Generate a Private Key for all, self-sign or CA Sign or Public Authority.
 
-$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "CN=tel-gdc-cdc-prakedia1.fyre.ibm.com" -validity 365 -keystore privatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "CN=mukesh007thakur.com" -validity 365 -keystore privatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
 
 
 $ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -list -keystore privatekey.p12 -storepass password
@@ -30,9 +30,9 @@ Export the Certificate from Private Key:
 
 /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -exportcert -noprompt -rfc -alias self -file pk1.crt -keystore privatekey.p12 -storepass password -storetype PKCS12
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -exportcert -noprompt -rfc -alias self -file pk1.crt -keystore privatekey.p12 -storepass password -storetype PKCS12
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -exportcert -noprompt -rfc -alias self -file pk1.crt -keystore privatekey.p12 -storepass password -storetype PKCS12
 Certificate stored in file <pk1.crt>
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ ls -ltr
+$ ls -ltr
 total 24
 -rw-rw-r-- 1 cdcadm cdcadm    0 Oct 17  2024 secrets.lock
 -rw-rw-r-- 1 cdcadm cdcadm   32 Oct 17  2024 secrets.b64
@@ -46,13 +46,13 @@ total 24
 
 Create a CSR request:
 
-/home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -certreq -noprompt -alias self -sigalg SHA256withECDSA -file pk1.csr -keystore privatekey.p12 -dname "CN=tel-gdc-cdc-prakedia1.fyre.ibm.com" -storepass password -storetype PKCS12 -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
+/home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -certreq -noprompt -alias self -sigalg SHA256withECDSA -file pk1.csr -keystore privatekey.p12 -dname "CN=mukesh007thakur.com" -storepass password -storetype PKCS12 -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
 
 
 
-$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -certreq -noprompt -alias self -sigalg SHA256withECDSA -file pk1.csr -keystore privatekey.p12 -dname "CN=tel-gdc-cdc-prakedia1.fyre.ibm.com" -storepass password -storetype PKCS12 -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -certreq -noprompt -alias self -sigalg SHA256withECDSA -file pk1.csr -keystore privatekey.p12 -dname "CN=mukesh007thakur.com" -storepass password -storetype PKCS12 -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ ls -ltr
+$ ls -ltr
 total 28
 -rw-rw-r-- 1 cdcadm cdcadm    0 Oct 17  2024 secrets.lock
 -rw-rw-r-- 1 cdcadm cdcadm   32 Oct 17  2024 secrets.b64
@@ -85,15 +85,15 @@ Import Keystore:
 
 Generate a Private Key for Cert Authority when i am the authority:
 
-/home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "O=ibm.com"           -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
+/home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "O=mkt.com"           -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
 
 
-$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "O=ibm.com"           -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -genkeypair -noprompt -alias self -keyalg EC -groupname secp256r1 -sigalg SHA256withECDSA -dname "O=mkt.com"           -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -ext BasicConstraints:critical=ca:true -ext KeyUsage:critical=keyCertSign,cRLSign
 Generating 256 bit EC (secp256r1) key pair and self-signed certificate (SHA256withECDSA) with a validity of 365 days
 	for: O=ibm.com
 
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ ls -ltr
+$ ls -ltr
 total 32
 -rw-rw-r-- 1 cdcadm cdcadm    0 Oct 17  2024 secrets.lock
 -rw-rw-r-- 1 cdcadm cdcadm   32 Oct 17  2024 secrets.b64
@@ -105,7 +105,7 @@ total 32
 -rw-r--r-- 1 cdcadm cdcadm  535 Sep 25 06:41 pk1.csr
 -rw-r--r-- 1 cdcadm cdcadm 1123 Sep 25 06:43 rootcaprivatekey.p12
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -list -keystore rootcaprivatekey.p12 -storepass password
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -list -keystore rootcaprivatekey.p12 -storepass password
 Keystore type: PKCS12
 Keystore provider: SUN
 
@@ -115,7 +115,7 @@ self, Sep 25, 2026, PrivateKeyEntry,
 Certificate fingerprint (SHA-256): 38:F7:FC:70:23:A5:0D:AF:E3:67:87:3A:0F:42:4B:86:32:9B:F5:29:F2:42:60:70:EA:59:EB:99:5F:07:AF:3C
 
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -list -keystore privatekey.p12 -storepass password
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -list -keystore privatekey.p12 -storepass password
 Keystore type: PKCS12
 Keystore provider: SUN
 
@@ -130,9 +130,9 @@ Sign a Certificate
 
 /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -gencert -noprompt -infile pk1.csr -outfile pk1signedbyrootca.crt -alias self -sigalg SHA256withECDSA -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -rfc -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -gencert -noprompt -infile pk1.csr -outfile pk1signedbyrootca.crt -alias self -sigalg SHA256withECDSA -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -rfc -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
+$ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -gencert -noprompt -infile pk1.csr -outfile pk1signedbyrootca.crt -alias self -sigalg SHA256withECDSA -validity 365 -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12 -rfc -ext KeyUsage:critical=digitalSignature -ext ExtendedKeyUsage:critical=serverAuth,clientAuth
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ ls -ltr
+$ ls -ltr
 total 36
 -rw-rw-r-- 1 cdcadm cdcadm    0 Oct 17  2024 secrets.lock
 -rw-rw-r-- 1 cdcadm cdcadm   32 Oct 17  2024 secrets.b64
@@ -145,7 +145,7 @@ total 36
 -rw-r--r-- 1 cdcadm cdcadm 1123 Sep 25 06:43 rootcaprivatekey.p12
 -rw-r--r-- 1 cdcadm cdcadm  647 Sep 25 06:45 pk1signedbyrootca.crt
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ cat pk1signedbyrootca.crt
+$ cat pk1signedbyrootca.crt
 -----BEGIN CERTIFICATE-----
 MIIBqjCCAVCgAwIBAgIJAJHyszMkf7vdMAoGCCqGSM49BAMCMBIxEDAOBgNVBAoT
 B2libS5jb20wHhcNMjYwOTI1MTM0NTM2WhcNMjcwOTI1MTM0NTM2WjAtMSswKQYD
@@ -158,7 +158,7 @@ KwYBBQUHAwIwCgYIKoZIzj0EAwIDSAAwRQIgLxsVf+yzIq5Kr0RZMO1lfs+KMFsx
 DEL6zrp6z576WT4CIQC3Yu7RGhjGT2awoAUY0dL4SbMSxoxyUQSZRhhLpybxdQ==
 -----END CERTIFICATE-----
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ cat pk1.crt
+$ cat pk1.crt
 -----BEGIN CERTIFICATE-----
 MIIBkzCCATmgAwIBAgIJAIW3jwHVntxbMAoGCCqGSM49BAMCMC0xKzApBgNVBAMT
 InRlbC1nZGMtY2RjLXByYWtlZGlhMS5meXJlLmlibS5jb20wHhcNMjYwOTI1MTMz
@@ -182,7 +182,7 @@ Export the CA Certificate when i am the authority.
 $ /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -exportcert -noprompt -rfc -alias self -file pk1ca.crt -keystore rootcaprivatekey.p12 -storepass password -storetype PKCS12
 Certificate stored in file <pk1ca.crt>
 
-[cdcadm@tel-gdc-cdc-prakedia1 keystore]$ ls -ltr
+$ ls -ltr
 total 40
 -rw-rw-r-- 1 cdcadm cdcadm    0 Oct 17  2024 secrets.lock
 -rw-rw-r-- 1 cdcadm cdcadm   32 Oct 17  2024 secrets.b64
