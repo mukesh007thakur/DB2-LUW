@@ -80,7 +80,9 @@ In Trust Store:
 Import Keystore:
 /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/bin/keytool -importkeystore -noprompt -srckeystore /home/cdcadm/InfoSphereDataReplication/ReplicationEngineforFlexRep/jre64/jre/lib/security/cacerts -destkeystore trust.p12 -deststoretype PKCS12 -srcstorepass changeit -deststorepass password
 
-Import Keystore from pfx file.
+---
+
+Import Keystore from pfx file:
 keytool -importkeystore -noprompt -srckeystore my.pfx -destkeystore trust.p12 -deststoretype PKCS12 -srcstorepass changeit -deststorepass password
 
 
