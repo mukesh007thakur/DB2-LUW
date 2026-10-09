@@ -211,6 +211,15 @@ Rename the Alias:
 keytool -changealias -alias ca_signed_abc -destalias self -keystore privatekey.p12 -storetype PKCS12
 
 
+================
+
+Delete a certificate using alias name. 
+
+**Always take the backup before deletion.**
+
+keytool -delete -alias myself -keystore privatekey.p12 -storetype PKCS12
+
+
 =================
 
   
