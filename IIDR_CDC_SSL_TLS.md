@@ -205,3 +205,12 @@ total 40
 
 
 ===============
+
+Rename the Alias:
+
+keytool -changealias -alias ca_signed_abc -destalias self -keystore privatekey.p12 -storetype PKCS12
+
+
+=================
+
+  
