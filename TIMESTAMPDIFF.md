@@ -34,20 +34,18 @@ The fix is simple:
 
 ## Why this matters in production
 
-This is not just a theoretical problem. A miscalculated month or year can lead to wrong business decisions and incorrect downstream logic in real applications.
+This is not a theoretical issue. In production systems, a wrong month or year calculation can change report logic, billing outcomes, and business decisions.
 
-Examples:
+Typical effects include:
 
-- HR and payroll: tenure, service anniversaries, and age calculations can be off by a month or more
-- Finance and billing: subscription periods and pricing windows can drift from the actual calendar
-- Risk and compliance: reporting periods, policy windows, and eligibility checks may be wrong
-- ETL and reporting: monthly rollups, aging buckets, and cohort analysis can be skewed by fixed 30-day assumptions
+- HR and payroll: tenure, service anniversaries, and age calculations can drift by a month or more
+- Finance and billing: subscription periods and pricing windows can differ from real calendar boundaries
+- Compliance and eligibility: policy windows, waiting periods, and approval triggers can be evaluated incorrectly
+- ETL and analytics: monthly rollups, aging buckets, and cohort analysis can be skewed by fixed 30-day assumptions
 
-A single wrong calculation can send the wrong data to a report, a workflow, or an approval process. In production systems, “approximately correct” is often not acceptable when the business rule is calendar-based.
+The problem is especially visible around month-end, leap-day, and year-boundary transitions. A result that looks “close enough” for a dashboard can still be wrong for business logic that depends on true calendar semantics.
 
-For example, if a report says a customer has been active for 30 days when the real difference is 28 days, the next logic may incorrectly trigger eligibility, billing, or retention events. These aren’t edge cases; they are normal calendar transitions around month boundaries and leap days.
-
-That is why a calendar-aware implementation matters: it follows IBM’s real calendar semantics for month-based intervals instead of approximating them with fixed durations.
+In other words, if a rule is based on actual months or years, a fixed-length approximation is not safe. A calendar-aware implementation is needed to align the result with IBM's real month/year behavior.
 
 ---
 
