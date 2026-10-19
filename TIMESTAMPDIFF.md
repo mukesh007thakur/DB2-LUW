@@ -32,6 +32,25 @@ The fix is simple:
 
 ---
 
+## Why this matters in production
+
+This is not just a theoretical problem. A miscalculated month or year can lead to wrong business decisions and incorrect downstream logic in real applications.
+
+Examples:
+
+- HR and payroll: tenure, service anniversaries, and age calculations can be off by a month or more
+- Finance and billing: subscription periods and pricing windows can drift from the actual calendar
+- Risk and compliance: reporting periods, policy windows, and eligibility checks may be wrong
+- ETL and reporting: monthly rollups, aging buckets, and cohort analysis can be skewed by fixed 30-day assumptions
+
+A single wrong calculation can send the wrong data to a report, a workflow, or an approval process. In production systems, “approximately correct” is often not acceptable when the business rule is calendar-based.
+
+For example, if a report says a customer has been active for 30 days when the real difference is 28 days, the next logic may incorrectly trigger eligibility, billing, or retention events. These aren’t edge cases; they are normal calendar transitions around month boundaries and leap days.
+
+That is why a calendar-aware implementation matters: it follows IBM’s real calendar semantics for month-based intervals instead of approximating them with fixed durations.
+
+---
+
 ## Why the native function is wrong
 
 `SYSIBM.TIMESTAMPDIFF` is documented to return an estimate, not an exact calendar-based result. The problem is that it effectively treats a month as 30 days and a year as 365 days:
