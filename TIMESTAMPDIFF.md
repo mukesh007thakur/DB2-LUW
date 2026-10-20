@@ -4,7 +4,7 @@
 > Schema: `DB2INST1`  
 > Function: `DB2INST1.TIMESTAMPDIFF(INTEGER, TIMESTAMP, TIMESTAMP)`  
 > References: [TIMESTAMPDIFF](https://www.ibm.com/docs/en/db2/12.1.x?topic=functions-timestampdiff) · [EXTRACT](https://www.ibm.com/docs/en/db2/12.1.x?topic=functions-extract) · [YMD_BETWEEN](https://www.ibm.com/docs/en/db2/12.1.x?topic=functions-ymd-between)  
-> Author: Mukesh Kumar · [mkt@ibm.com](mailto:mkt@ibm.com)
+> Author: Mukesh Kumar · [mkt@ibm.com]
 
 ---
 
